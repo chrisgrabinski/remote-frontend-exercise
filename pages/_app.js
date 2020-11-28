@@ -1,16 +1,8 @@
 import Head from "next/head";
-import { createGlobalStyle } from "styled-components";
 import "tailwindcss/dist/base.css";
 
 import { EmployeesProvider } from "../context/EmployeesContext";
-
-const GlobalStyle = createGlobalStyle`
-  body {
-    background-color: #F4F7FC;
-    color: #778CA3;
-    font-family: 'Inter', sans-serif;
-  }
-`;
+import Layout from "../components/Layout";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -22,9 +14,10 @@ function MyApp({ Component, pageProps }) {
           rel="stylesheet"
         />
       </Head>
-      <GlobalStyle />
       <EmployeesProvider>
-        <Component {...pageProps} />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       </EmployeesProvider>
     </>
   );
