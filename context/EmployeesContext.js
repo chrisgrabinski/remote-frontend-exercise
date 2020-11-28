@@ -34,7 +34,7 @@ export const EmployeesProvider = ({ children }) => {
   const initialState = DEFAULT_EMPLOYEES;
   const [employees, setEmployees] = useState(initialState);
 
-  const addEmployee = (employee) => {
+  const createEmployee = (employee) => {
     const employeeId = generateEmployeeId(employee.name);
     const employeeData = {
       id: employeeId,
@@ -62,7 +62,7 @@ export const EmployeesProvider = ({ children }) => {
 
   return (
     <EmployeesContext.Provider
-      value={{ employees, addEmployee, getEmployee, updateEmployee }}
+      value={{ employees, createEmployee, getEmployee, updateEmployee }}
     >
       {children}
     </EmployeesContext.Provider>

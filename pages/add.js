@@ -5,7 +5,7 @@ import { EmployeesContext } from "../context/EmployeesContext";
 export default function AddEmployeePage() {
   const router = useRouter();
 
-  const { addEmployee } = useContext(EmployeesContext);
+  const { createEmployee } = useContext(EmployeesContext);
 
   const [formData, setFormData] = useState({});
 
@@ -19,7 +19,7 @@ export default function AddEmployeePage() {
   const handleFormSubmit = (event) => {
     event.preventDefault();
 
-    addEmployee(formData);
+    createEmployee(formData);
 
     router.push("/");
   };
