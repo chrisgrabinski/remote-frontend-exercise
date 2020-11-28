@@ -1,14 +1,21 @@
 import React, { useContext } from "react";
+import Link from "next/link";
 import { EmployeesContext } from "../context/EmployeesContext";
 
 export default function IndexPage() {
   const { employees } = useContext(EmployeesContext);
 
   return (
-    <ul>
-      {employees.map((employee) => (
-        <li key={employee.id}>{employee.name}</li>
-      ))}
-    </ul>
+    <>
+      <Link href="/add">Add employee</Link>
+      <ul>
+        {employees.map((employee) => (
+          <li key={employee.id}>
+            <p>{employee.name}</p>
+            <Link href={`/edit/${employee.id}`}>Edit</Link>
+          </li>
+        ))}
+      </ul>
+    </>
   );
 }
