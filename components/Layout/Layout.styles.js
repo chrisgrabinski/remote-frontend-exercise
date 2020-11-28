@@ -5,7 +5,7 @@ import { colors } from "../../config/theme";
 export const GlobalStyle = createGlobalStyle`
   body {
     background-color: ${colors.lightBlue};
-    color: ${colors.lightGrey};
+    color: ${colors.grey};
     font-family: 'Inter', sans-serif;
   }
 `;
