@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import { EmployeesContext } from "../context/EmployeesContext";
 
@@ -30,6 +31,9 @@ export default function AddEmployeePage() {
 
   return (
     <div>
+      <Head>
+        <title>Add a new employee</title>
+      </Head>
       <h1>Add a new employee</h1>
       <p>Fill out the information of your new employee.</p>
       <form onSubmit={handleFormSubmit}>
