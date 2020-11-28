@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
 
-const DEFAULT_PEOPLE = [
+const DEFAULT_EMPLOYEES = [
   {
     id: 0,
     name: "Ann Henry",
@@ -27,15 +27,15 @@ const DEFAULT_PEOPLE = [
   },
 ];
 
-export const PeopleContext = createContext();
+export const EmployeesContext = createContext();
 
-export const PeopleProvider = ({ children }) => {
-  const initialState = DEFAULT_PEOPLE;
-  const [people, setPeople] = useState(initialState);
+export const EmployeesProvider = ({ children }) => {
+  const initialState = DEFAULT_EMPLOYEES;
+  const [employees, setEmployees] = useState(initialState);
 
   return (
-    <PeopleContext.Provider value={{ people }}>
+    <EmployeesContext.Provider value={{ employees }}>
       {children}
-    </PeopleContext.Provider>
+    </EmployeesContext.Provider>
   );
 };

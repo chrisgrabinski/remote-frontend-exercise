@@ -1,13 +1,13 @@
 import React, { useContext } from "react";
-import { PeopleContext } from "../context/PeopleContext";
+import { EmployeesContext } from "../context/EmployeesContext";
 
 export default function IndexPage() {
-  const { people } = useContext(PeopleContext);
+  const { employees } = useContext(EmployeesContext);
 
   return (
     <ul>
-      {people.map((person) => (
-        <li key={person.id}>{person.name}</li>
+      {employees.map((employee) => (
+        <li key={employee.id}>{employee.name}</li>
       ))}
     </ul>
   );

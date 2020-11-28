@@ -2,7 +2,7 @@ import Head from "next/head";
 import { createGlobalStyle } from "styled-components";
 import "tailwindcss/dist/base.css";
 
-import { PeopleProvider } from "../context/PeopleContext";
+import { EmployeesProvider } from "../context/EmployeesContext";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -23,9 +23,9 @@ function MyApp({ Component, pageProps }) {
         />
       </Head>
       <GlobalStyle />
-      <PeopleProvider>
+      <EmployeesProvider>
         <Component {...pageProps} />
-      </PeopleProvider>
+      </EmployeesProvider>
     </>
   );
 }
