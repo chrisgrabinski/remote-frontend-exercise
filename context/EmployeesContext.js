@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import generateEmployeeId from "../utils/generate-employee-id";
 
 const DEFAULT_EMPLOYEES = [
   {
@@ -33,8 +34,18 @@ export const EmployeesProvider = ({ children }) => {
   const initialState = DEFAULT_EMPLOYEES;
   const [employees, setEmployees] = useState(initialState);
 
+  const addEmployee = (employee) => {
+    const employeeId = generateEmployeeId(employee.name);
+    const employeeData = {
+      id: employeeId,
+      ...employee,
+    };
+
+    setEmployees([employeeData, ...employees]);
+  };
+
   return (
-    <EmployeesContext.Provider value={{ employees }}>
+    <EmployeesContext.Provider value={{ employees, addEmployee }}>
       {children}
     </EmployeesContext.Provider>
   );
