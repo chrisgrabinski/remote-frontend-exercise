@@ -121,7 +121,9 @@ export default function Form({
           <Button isSecondary onClick={handleButtonResetClick} type="reset">
             Cancel
           </Button>
-          <Button type="submit">{primaryActionLabel}</Button>
+          <Button type="submit" data-testid="submitButton">
+            {primaryActionLabel}
+          </Button>
         </ButtonGroup>
       </Footer>
     </FormWrapper>
