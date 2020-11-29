@@ -71,6 +71,10 @@ test("read an existing employee from context", () => {
 });
 
 test("update an existing employee in context", () => {
+  const updatedEmployee = {
+    name: "Fox Mulder",
+  };
+
   const TestComponent = () => {
     const { employees, getEmployee, updateEmployee } = useContext(
       EmployeesContext
@@ -83,7 +87,7 @@ test("update an existing employee in context", () => {
         <div data-testid="output">
           {JSON.stringify(getEmployee(targetEmployee))}
         </div>
-        <button onClick={() => updateEmployee(targetEmployee, NEW_EMPLOYEE)}>
+        <button onClick={() => updateEmployee(targetEmployee, updatedEmployee)}>
           Update employee
         </button>
       </>
@@ -98,13 +102,11 @@ test("update an existing employee in context", () => {
 
   let output = screen.getByTestId("output");
 
-  expect(output.textContent).toMatch(
-    new RegExp(DEFAULT_EMPLOYEES[0].name, "i")
-  );
+  expect(output.textContent).toMatch(new RegExp(NEW_EMPLOYEE.name, "i"));
 
   UserEvent.click(screen.getByRole("button"));
 
   output = screen.getByTestId("output");
 
-  expect(output).toHaveTextContent(new RegExp(NEW_EMPLOYEE.name, "i"));
+  expect(output).toHaveTextContent(new RegExp(updatedEmployee.name, "i"));
 });

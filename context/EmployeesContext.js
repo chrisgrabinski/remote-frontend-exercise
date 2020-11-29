@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { v4 as uuid4 } from "uuid";
 
@@ -32,7 +32,11 @@ export const DEFAULT_EMPLOYEES = [
 export const EmployeesContext = createContext();
 
 export const EmployeesProvider = ({ children }) => {
-  const initialState = DEFAULT_EMPLOYEES;
+  const initialState =
+    typeof window !== "undefined" && localStorage.getItem("employees")
+      ? JSON.parse(localStorage.getItem("employees"))
+      : DEFAULT_EMPLOYEES;
+
   const [employees, setEmployees] = useState(initialState);
 
   const createEmployee = (employee) => {
@@ -64,6 +68,11 @@ export const EmployeesProvider = ({ children }) => {
 
     return employeeData;
   };
+
+  useEffect(() => {
+    const localEmployees = JSON.stringify(employees);
+    localStorage.setItem("employees", localEmployees);
+  }, [employees]);
 
   return (
     <EmployeesContext.Provider
