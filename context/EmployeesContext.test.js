@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { render, screen } from "@testing-library/react";
 import UserEvent from "@testing-library/user-event";
+import "@testing-library/jest-dom";
 
 import {
   DEFAULT_EMPLOYEES,
@@ -40,7 +41,7 @@ test("create a new employee in context", () => {
 
   const output = screen.getByTestId("output");
 
-  expect(output.textContent).toMatch(new RegExp(NEW_EMPLOYEE.name, "i"));
+  expect(output).toHaveTextContent(new RegExp(NEW_EMPLOYEE.name, "i"));
 });
 
 test("read an existing employee from context", () => {
@@ -66,7 +67,7 @@ test("read an existing employee from context", () => {
 
   const output = screen.getByTestId("output");
 
-  expect(output.textContent).toMatch(new RegExp(exampleEmployee.name, "i"));
+  expect(output).toHaveTextContent(new RegExp(exampleEmployee.name, "i"));
 });
 
 test("update an existing employee in context", () => {
@@ -105,5 +106,5 @@ test("update an existing employee in context", () => {
 
   output = screen.getByTestId("output");
 
-  expect(output.textContent).toMatch(new RegExp(NEW_EMPLOYEE.name, "i"));
+  expect(output).toHaveTextContent(new RegExp(NEW_EMPLOYEE.name, "i"));
 });
