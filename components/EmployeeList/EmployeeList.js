@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import { Table, RowGroup, Row, Cell, Body } from "./EmployeeList.styles";
 
-export default function PeopleList({ children }) {
+export default function EmployeeList({ children }) {
   return (
     <Table role="table">
       <RowGroup role="rowgroup">
@@ -20,13 +20,13 @@ export default function PeopleList({ children }) {
   );
 }
 
-PeopleList.propTypes = {
+EmployeeList.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.node,
     PropTypes.arrayOf(PropTypes.node),
   ]),
 };
 
-PeopleList.defaultProps = {
+EmployeeList.defaultProps = {
   children: null,
 };
