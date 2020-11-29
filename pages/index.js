@@ -5,6 +5,7 @@ import { EmployeesContext } from "../context/EmployeesContext";
 
 import PageHeader from "../components/PageHeader";
 import ButtonLink from "../components/ButtonLink";
+import UserIcon from "../components/UserIcon";
 import EmployeeList from "../components/EmployeeList";
 import EmployeeCard from "../components/EmployeeCard";
 
@@ -19,7 +20,11 @@ export default function IndexPage() {
       <PageHeader
         title="People"
         description={`${employees.length} employees`}
-        action={<ButtonLink href="/add">Add employee</ButtonLink>}
+        action={
+          <ButtonLink href="/add" isHighlight size="lg" icon={<UserIcon />}>
+            Add employee
+          </ButtonLink>
+        }
       />
       <EmployeeList>
         {employees.map((employee) => (
