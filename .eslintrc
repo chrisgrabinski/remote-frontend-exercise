@@ -4,7 +4,7 @@
     "ecmaVersion": 2020,
     "sourceType": "module",
     "ecmaFeatures": {
-      "jsx": true,
+      "jsx": true
     }
   },
   "settings": {
@@ -22,6 +22,6 @@
     "amd": true,
     "browser": true,
     "jest": true,
-    "node": true,
+    "node": true
   }
 }
