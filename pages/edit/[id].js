@@ -20,7 +20,7 @@ export default function EditEmployeePage() {
     router.push("/");
   };
 
-  return employeeData ? (
+  return formData ? (
     <>
       <Head>
         <title>Edit employee {formData.name}</title>
