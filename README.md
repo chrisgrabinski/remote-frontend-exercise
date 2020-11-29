@@ -1,6 +1,6 @@
 Frontend code exercise from Remote.
 
-This project contains a React CRUD application (without delete). You can create and update records of employees.
+This project contains a React CRUD application (without delete). You can create and update records of employees. State-management is handled via the React Context API, so you can just clone the repository and get started right away.
 
 See a preview here: https://remote-frontend-exercise.chrisgrabinski.vercel.app/
 
@@ -25,6 +25,14 @@ This project uses [Jest](https://jestjs.io/) and [React Testing Library](https:/
 ```bash
 yarn test
 ```
+
+If you'd like to watch for changes during development, you could also use
+
+```bash
+yarn test:watch
+```
+
+There are several options to choose from (run all tests, run tests only on changed files, …). Follow the instructions in your terminal and pick the one that's right for you.
 
 ## Learn More
 
