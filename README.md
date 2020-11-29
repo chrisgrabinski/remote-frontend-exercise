@@ -26,8 +26,6 @@ This project uses [Jest](https://jestjs.io/) and [React Testing Library](https:/
 yarn test
 ```
 
-Follow the instructions inside your terminal and select which tests you would like to run.
-
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

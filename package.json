@@ -6,8 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test": "jest --watch",
-    "lint": "eslint --fix ."
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "lint": "eslint . --ext js"
   },
   "dependencies": {
     "date-fns": "^2.16.1",
