@@ -5,10 +5,10 @@ import userEvent from "@testing-library/user-event";
 import Button from "./";
 
 test("calls a function when clicked", () => {
-  const mockFn = jest.fn();
+  const handleClick = jest.fn();
 
-  render(<Button onClick={() => mockFn()}>This is a button</Button>);
+  render(<Button onClick={handleClick}>This is a button</Button>);
   userEvent.click(screen.getByRole("button"));
 
-  expect(mockFn).toHaveBeenCalled();
+  expect(handleClick).toHaveBeenCalled();
 });
