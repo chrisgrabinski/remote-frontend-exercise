@@ -89,6 +89,7 @@ export default function Form({
               type="text"
               value={formData.country}
             >
+              <option value="">Select a country</option>
               {countries.map((country) => (
                 <option key={country} value={country}>
                   {country}
