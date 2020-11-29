@@ -58,42 +58,42 @@ export default function Form({
           <FormItem label="Name" hint="First and last names">
             <input
               autoComplete="off"
+              defaultValue={formData.name}
               name="name"
-              onChange={handleInputChange}
+              onBlur={handleInputChange}
               placeholder="e.g. Jane Doe"
               required
               type="text"
-              value={formData.name}
             />
           </FormItem>
           <FormItem label="Birthdate" hint="DD/MM/YYYY">
             <input
               autoComplete="off"
+              defaultValue={formData.birthDate}
               name="birthDate"
-              onChange={handleInputChange}
+              onBlur={handleInputChange}
               placeholder="e.g. 17/02/1990"
               required
               type="date"
-              value={formData.birthDate}
             />
           </FormItem>
           <FormItem label="Job title" hint="What is their role?">
             <input
+              defaultValue={formData.jobTitle}
               name="jobTitle"
-              onChange={handleInputChange}
+              onBlur={handleInputChange}
               placeholder="e.g. Product manager"
               required
               type="text"
-              value={formData.jobTitle}
             />
           </FormItem>
           <FormItem label="Country" hint="Where are they based?">
             <select
+              defaultValue={formData.country}
               name="country"
-              onChange={handleInputChange}
+              onBlur={handleInputChange}
               required
               type="text"
-              value={formData.country}
             >
               <option value="">Select a country</option>
               {countries.map((country) => (
@@ -105,13 +105,13 @@ export default function Form({
           </FormItem>
           <FormItem label="Salary" hint="Gross yearly salary">
             <input
+              defaultValue={formData.salary}
               min="0"
               name="salary"
               onChange={handleInputChange}
               placeholder="e.g. 50000"
               required
               type="number"
-              value={formData.salary}
             />
           </FormItem>
         </BodyInner>

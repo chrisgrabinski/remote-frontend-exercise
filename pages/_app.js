@@ -1,3 +1,5 @@
+import React from "react";
+import PropTypes from "prop-types";
 import dynamic from "next/dynamic";
 import Head from "next/head";
 import "tailwindcss/dist/base.css";
@@ -8,7 +10,7 @@ const EmployeesProvider = dynamic(() => import("../context/EmployeesContext"), {
   ssr: false,
 });
 
-function MyApp({ Component, pageProps }) {
+export default function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
@@ -27,4 +29,12 @@ function MyApp({ Component, pageProps }) {
   );
 }
 
-export default MyApp;
+MyApp.propTypes = {
+  Component: PropTypes.node,
+  pageProps: PropTypes.object,
+};
+
+MyApp.defaultProps = {
+  Component: null,
+  pageProps: null,
+};

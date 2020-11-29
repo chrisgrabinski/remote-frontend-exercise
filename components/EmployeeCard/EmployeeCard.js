@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Link from "next/link";
 
 import ButtonLink from "../ButtonLink";
 
@@ -46,6 +45,7 @@ export default function EmployeeCard({
 }
 
 EmployeeCard.propTypes = {
+  birthDate: PropTypes.string,
   country: PropTypes.string,
   id: PropTypes.string,
   jobTitle: PropTypes.string,
@@ -54,7 +54,8 @@ EmployeeCard.propTypes = {
 };
 
 EmployeeCard.defaultProps = {
-  ountry: null,
+  birthDate: null,
+  country: null,
   id: null,
   jobTitle: null,
   name: null,

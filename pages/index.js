@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import Link from "next/link";
 import Head from "next/head";
 import { EmployeesContext } from "../context/EmployeesContext";
 

@@ -1,4 +1,5 @@
-import { createContext, useState } from "react";
+import React, { createContext, useState } from "react";
+import PropTypes from "prop-types";
 import { v4 as uuid4 } from "uuid";
 
 const DEFAULT_EMPLOYEES = [
@@ -66,6 +67,17 @@ export const EmployeesProvider = ({ children }) => {
       {children}
     </EmployeesContext.Provider>
   );
+};
+
+EmployeesProvider.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.node,
+    PropTypes.arrayOf(PropTypes.node),
+  ]),
+};
+
+EmployeesProvider.defaultProps = {
+  children: null,
 };
 
 export default EmployeesProvider;

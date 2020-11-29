@@ -19,6 +19,9 @@
     "plugin:prettier/recommended"
   ],
   "env": {
-    "jest": true
+    "amd": true,
+    "browser": true,
+    "jest": true,
+    "node": true,
   }
 }
