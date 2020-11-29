@@ -26,12 +26,13 @@ export const Body = styled.div`
     border-color: ${colors.purple};
   }
 
-  input {
+  input,
+  select {
     color: ${colors.grey};
     display: block;
-    width: 100%;
     font-size: 18px;
     padding: 8px 0;
+    width: 100%;
 
     &:focus {
       outline: 0;

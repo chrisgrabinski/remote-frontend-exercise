@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { useRouter } from "next/router";
 
+import countries from "../../constants/countries.json";
+
 import ButtonGroup from "../ButtonGroup";
 import Button from "../Button";
+import FormItem from "../FormItem";
 
 import {
   FormWrapper,
@@ -16,13 +19,21 @@ import {
 } from "./Form.styles";
 
 export default function Form({
-  children,
   description,
+  formData,
   onSubmit,
   primaryActionLabel,
+  setFormData,
   title,
 }) {
   const router = useRouter();
+
+  const handleInputChange = (event) => {
+    setFormData({
+      ...formData,
+      [event.target.name]: event.target.value,
+    });
+  };
 
   const handleButtonResetClick = () => {
     router.push("/");
@@ -35,7 +46,64 @@ export default function Form({
         <Description>{description}</Description>
       </Header>
       <Body>
-        <BodyInner>{children}</BodyInner>
+        <BodyInner>
+          <FormItem label="Name" hint="First and last names">
+            <input
+              autoComplete="off"
+              name="name"
+              onChange={handleInputChange}
+              placeholder="e.g. Jane Doe"
+              required
+              type="text"
+              value={formData.name}
+            />
+          </FormItem>
+          <FormItem label="Birthdate" hint="DD/MM/YYYY">
+            <input
+              autoComplete="off"
+              name="birthDate"
+              onChange={handleInputChange}
+              placeholder="e.g. 17/02/1990"
+              required
+              type="text"
+              value={formData.birthDate}
+            />
+          </FormItem>
+          <FormItem label="Job title" hint="What is their role?">
+            <input
+              name="jobTitle"
+              onChange={handleInputChange}
+              placeholder="e.g. Product manager"
+              required
+              type="text"
+              value={formData.jobTitle}
+            />
+          </FormItem>
+          <FormItem label="Country" hint="Where are they based?">
+            <select
+              name="country"
+              onChange={handleInputChange}
+              required
+              type="text"
+              value={formData.country}
+            >
+              {countries.map((country) => (
+                <option value={country}>{country}</option>
+              ))}
+            </select>
+          </FormItem>
+          <FormItem label="Salary" hint="Gross yearly salary">
+            <input
+              min="0"
+              name="salary"
+              onChange={handleInputChange}
+              placeholder="e.g. 50000"
+              required
+              type="number"
+              value={formData.salary}
+            />
+          </FormItem>
+        </BodyInner>
       </Body>
       <Footer>
         <ButtonGroup>
@@ -50,20 +118,26 @@ export default function Form({
 }
 
 Form.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.node,
-    PropTypes.arrayOf(PropTypes.node),
-  ]),
   description: PropTypes.string,
+  formData: PropTypes.shape({
+    birthDate: PropTypes.string,
+    country: PropTypes.string,
+    id: PropTypes.string,
+    jobTitle: PropTypes.string,
+    name: PropTypes.string,
+    salary: PropTypes.number,
+  }),
   onSubmit: PropTypes.func,
   primaryActionLabel: PropTypes.string,
+  setFormData: PropTypes.func,
   title: PropTypes.string,
 };
 
 Form.defaultProps = {
-  children: null,
   description: null,
+  formData: null,
   onSubmit: () => {},
   primaryActionLabel: null,
+  setFormData: () => {},
   title: null,
 };
