@@ -2,7 +2,7 @@ import React, { createContext, useState } from "react";
 import PropTypes from "prop-types";
 import { v4 as uuid4 } from "uuid";
 
-const DEFAULT_EMPLOYEES = [
+export const DEFAULT_EMPLOYEES = [
   {
     id: "0",
     name: "Ann Henry",
@@ -46,7 +46,12 @@ export const EmployeesProvider = ({ children }) => {
 
   const updateEmployee = (employeeId, data) => {
     const updatedEmployees = employees.map((employee) =>
-      employee.id === employeeId ? data : employee
+      employee.id === employeeId
+        ? {
+            id: employee.id,
+            ...data,
+          }
+        : employee
     );
 
     setEmployees(updatedEmployees);
