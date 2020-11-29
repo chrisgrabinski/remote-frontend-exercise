@@ -11,6 +11,7 @@ import {
   Title,
   Description,
   Body,
+  BodyInner,
   Footer,
 } from "./Form.styles";
 
@@ -33,7 +34,9 @@ export default function Form({
         <Title>{title}</Title>
         <Description>{description}</Description>
       </Header>
-      <Body>{children}</Body>
+      <Body>
+        <BodyInner>{children}</BodyInner>
+      </Body>
       <Footer>
         <ButtonGroup>
           <Button isSecondary onClick={handleButtonResetClick}>

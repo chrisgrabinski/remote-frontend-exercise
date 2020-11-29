@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { EmployeesContext } from "../../context/EmployeesContext";
 
 import Form from "../../components/Form";
+import FormItem from "../../components/FormItem";
 
 export default function EditEmployeePage() {
   const router = useRouter();
@@ -40,51 +41,43 @@ export default function EditEmployeePage() {
         primaryActionLabel="Save"
         onSubmit={handleFormSubmit}
       >
-        <label>
-          Name
+        <FormItem label="Name" hint="First and last names">
           <input
+            autoComplete="off"
             name="name"
-            type="text"
             onChange={handleInputChange}
-            value={formData.name}
+            placeholder="e.g. Jane Doe"
+            type="text"
           />
-        </label>
-        <label>
-          Birth date
+        </FormItem>
+        <FormItem label="Birthdate" hint="DD/MM/YYYY">
           <input
+            autoComplete="off"
             name="birthDate"
-            type="text"
             onChange={handleInputChange}
-            value={formData.birthDate}
+            placeholder="e.g. 17/02/1990"
+            type="text"
           />
-        </label>
-        <label>
-          Job title
+        </FormItem>
+        <FormItem label="Job title" hint="What is their role?">
           <input
             name="jobTitle"
-            type="text"
             onChange={handleInputChange}
-            value={formData.jobTitle}
-          />
-        </label>
-        <label>
-          Country
-          <input
-            name="country"
+            placeholder="e.g. Product manager"
             type="text"
-            onChange={handleInputChange}
-            value={formData.country}
           />
-        </label>
-        <label>
-          Salary
+        </FormItem>
+        <FormItem label="Country" hint="Where are they based?">
+          <input name="country" type="text" onChange={handleInputChange} />
+        </FormItem>
+        <FormItem label="Salary" hint="Gross yearly salary">
           <input
             name="salary"
-            type="text"
             onChange={handleInputChange}
-            value={formData.salary}
+            placeholder="e.g. 50000"
+            type="text"
           />
-        </label>
+        </FormItem>
       </Form>
     </div>
   ) : (

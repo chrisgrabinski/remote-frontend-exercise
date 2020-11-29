@@ -32,6 +32,13 @@ export const Body = styled(FormRow)`
   padding-bottom: 80px;
 `;
 
+export const BodyInner = styled.div`
+  display: grid;
+  gap: 32px;
+  margin: 0 auto;
+  max-width: 600px;
+`;
+
 export const Footer = styled(FormRow)`
   background-color: #f9faff;
   display: flex;
