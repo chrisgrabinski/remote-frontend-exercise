@@ -67,3 +67,5 @@ export const EmployeesProvider = ({ children }) => {
     </EmployeesContext.Provider>
   );
 };
+
+export default EmployeesProvider;

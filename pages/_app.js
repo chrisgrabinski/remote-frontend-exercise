@@ -1,8 +1,12 @@
+import dynamic from "next/dynamic";
 import Head from "next/head";
 import "tailwindcss/dist/base.css";
 
-import { EmployeesProvider } from "../context/EmployeesContext";
 import Layout from "../components/Layout";
+
+const EmployeesProvider = dynamic(() => import("../context/EmployeesContext"), {
+  ssr: false,
+});
 
 function MyApp({ Component, pageProps }) {
   return (
