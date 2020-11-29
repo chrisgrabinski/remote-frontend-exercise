@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Link from "next/link";
 
-import Button from "../Button";
+import ButtonLink from "../ButtonLink";
 
 import formatNumber from "../../utils/format-number";
 
@@ -36,11 +36,9 @@ export default function EmployeeCard({
         <SalaryInterval>per year</SalaryInterval>
       </Cell>
       <Cell role="cell">
-        <Link href={`edit/${id}`} passHref>
-          <Button as="a" isSecondary>
-            Edit
-          </Button>
-        </Link>
+        <ButtonLink href={`/edit/${id}`} isSecondary>
+          Edit
+        </ButtonLink>
       </Cell>
     </Row>
   );
