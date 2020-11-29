@@ -4,17 +4,16 @@ import PropTypes from "prop-types";
 import { Wrapper, Icon } from "./Button.styles";
 
 export default function Button({
-  as,
   children,
-  href,
   icon,
   isHighlight,
   isSecondary,
   onClick,
   size,
+  ...props
 }) {
   return (
-    <Wrapper {...{ as, href, isHighlight, isSecondary, onClick, size }}>
+    <Wrapper {...{ isHighlight, isSecondary, onClick, size, ...props }}>
       {icon && <Icon>{icon}</Icon>}
       {children}
     </Wrapper>
@@ -22,12 +21,10 @@ export default function Button({
 }
 
 Button.propTypes = {
-  as: PropTypes.string,
   children: PropTypes.oneOfType([
     PropTypes.node,
     PropTypes.arrayOf(PropTypes.node),
   ]),
-  href: PropTypes.string,
   icon: PropTypes.node,
   isHighlight: PropTypes.bool,
   isSecondary: PropTypes.bool,
@@ -36,9 +33,7 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
-  as: null,
   children: null,
-  href: null,
   icon: null,
   isHighlight: false,
   isSecondary: false,

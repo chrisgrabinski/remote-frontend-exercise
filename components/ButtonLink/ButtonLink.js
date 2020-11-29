@@ -13,11 +13,15 @@ export default function ButtonLink({
   isHighlight,
   isSecondary,
   size,
+  ...props
 }) {
   return (
     <Link {...{ href }} passHref>
       <a>
-        <Button as="span" {...{ icon, isHighlight, isSecondary, size }}>
+        <Button
+          as="span"
+          {...{ icon, isHighlight, isSecondary, size, ...props }}
+        >
           {children}
         </Button>
       </a>
