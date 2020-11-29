@@ -88,7 +88,9 @@ export default function Form({
               value={formData.country}
             >
               {countries.map((country) => (
-                <option value={country}>{country}</option>
+                <option key={country} value={country}>
+                  {country}
+                </option>
               ))}
             </select>
           </FormItem>
