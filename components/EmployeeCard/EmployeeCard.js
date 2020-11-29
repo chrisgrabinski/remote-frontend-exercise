@@ -4,6 +4,7 @@ import Link from "next/link";
 
 import ButtonLink from "../ButtonLink";
 
+import formatDate from "../../utils/format-date";
 import formatNumber from "../../utils/format-number";
 
 import {
@@ -27,7 +28,7 @@ export default function EmployeeCard({
     <Row role="row">
       <Cell role="cell">
         <Name>{name}</Name>
-        <BirthDate>{birthDate}</BirthDate>
+        <BirthDate>{formatDate(birthDate)}</BirthDate>
       </Cell>
       <Cell role="cell">{jobTitle}</Cell>
       <Cell role="cell">{country}</Cell>

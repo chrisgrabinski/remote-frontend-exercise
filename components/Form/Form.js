@@ -67,7 +67,7 @@ export default function Form({
               onChange={handleInputChange}
               placeholder="e.g. 17/02/1990"
               required
-              type="text"
+              type="date"
               value={formData.birthDate}
             />
           </FormItem>
