@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { EmployeesContext } from "../context/EmployeesContext";
@@ -7,14 +7,10 @@ import Form from "../components/Form";
 
 export default function AddEmployeePage() {
   const router = useRouter();
-  const [formData, setFormData] = useState({});
   const { createEmployee } = useContext(EmployeesContext);
 
-  const handleFormSubmit = (event) => {
-    event.preventDefault();
-
+  const handleFormSubmit = (formData) => {
     createEmployee(formData);
-
     router.push("/");
   };
 
@@ -28,7 +24,6 @@ export default function AddEmployeePage() {
         onSubmit={handleFormSubmit}
         primaryActionLabel="Add employee"
         title="Add a new employee"
-        {...{ formData, setFormData }}
       />
     </>
   );

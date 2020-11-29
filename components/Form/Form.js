@@ -20,13 +20,19 @@ import {
 
 export default function Form({
   description,
-  formData,
+  inititalState,
   onSubmit,
   primaryActionLabel,
-  setFormData,
   title,
 }) {
   const router = useRouter();
+
+  const [formData, setFormData] = useState(inititalState);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    onSubmit(formData);
+  };
 
   const handleInputChange = (event) => {
     setFormData({
@@ -42,7 +48,7 @@ export default function Form({
   };
 
   return (
-    <FormWrapper {...{ onSubmit }}>
+    <FormWrapper onSubmit={handleSubmit}>
       <Header>
         <Title>{title}</Title>
         <Description>{description}</Description>
@@ -112,7 +118,7 @@ export default function Form({
       </Body>
       <Footer>
         <ButtonGroup>
-          <Button isSecondary onClick={handleButtonResetClick}>
+          <Button isSecondary onClick={handleButtonResetClick} type="reset">
             Cancel
           </Button>
           <Button type="submit">{primaryActionLabel}</Button>
@@ -124,25 +130,28 @@ export default function Form({
 
 Form.propTypes = {
   description: PropTypes.string,
-  formData: PropTypes.shape({
+  inititalState: PropTypes.shape({
     birthDate: PropTypes.string,
     country: PropTypes.string,
-    id: PropTypes.string,
     jobTitle: PropTypes.string,
     name: PropTypes.string,
     salary: PropTypes.string,
   }),
   onSubmit: PropTypes.func,
   primaryActionLabel: PropTypes.string,
-  setFormData: PropTypes.func,
   title: PropTypes.string,
 };
 
 Form.defaultProps = {
   description: null,
-  formData: null,
+  inititalState: {
+    birthDate: "",
+    country: "",
+    jobTitle: "",
+    name: "",
+    salary: "",
+  },
   onSubmit: () => {},
   primaryActionLabel: null,
-  setFormData: () => {},
   title: null,
 };

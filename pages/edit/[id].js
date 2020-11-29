@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { EmployeesContext } from "../../context/EmployeesContext";
@@ -10,20 +10,16 @@ export default function EditEmployeePage() {
   const { id } = router.query;
   const { getEmployee, updateEmployee } = useContext(EmployeesContext);
   const employeeData = getEmployee(id);
-  const [formData, setFormData] = useState(employeeData);
 
-  const handleFormSubmit = (event) => {
-    event.preventDefault();
-
+  const handleFormSubmit = (formData) => {
     updateEmployee(id, formData);
-
     router.push("/");
   };
 
-  return formData ? (
+  return employeeData ? (
     <>
       <Head>
-        <title>Edit employee {formData.name}</title>
+        <title>Edit employee</title>
       </Head>
       <Form
         description="Edit the information of your employee."
@@ -31,7 +27,6 @@ export default function EditEmployeePage() {
         onSubmit={handleFormSubmit}
         primaryActionLabel="Save"
         title="Edit employee"
-        {...{ formData, setFormData }}
       />
     </>
   ) : (
