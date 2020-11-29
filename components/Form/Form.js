@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { useRouter } from "next/router";
 
-import countries from "../../constants/countries.json";
+import countries from "../../constants/countries";
 
 import ButtonGroup from "../ButtonGroup";
 import Button from "../Button";

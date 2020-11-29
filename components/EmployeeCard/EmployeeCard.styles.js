@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { colors } from "../../config/theme";
+import { colors } from "../../constants/theme";
 
 import { Row as EmployeeListRow } from "../EmployeeList/EmployeeList.styles";
 

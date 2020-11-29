@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { colors } from "../../config/theme";
+import { colors } from "../../constants/theme";
 
 export const FormWrapper = styled.form`
   background-color: ${colors.white};

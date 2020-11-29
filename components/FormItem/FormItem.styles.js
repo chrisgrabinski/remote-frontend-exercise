@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { colors } from "../../config/theme";
+import { colors } from "../../constants/theme";
 
 export const Wrapper = styled.label`
   color: ${colors.lightGrey};

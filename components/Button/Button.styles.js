@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { colors } from "../../config/theme";
+import { colors } from "../../constants/theme";
 
 const semiTransparentPurple = `${colors.purple}4D`;
 

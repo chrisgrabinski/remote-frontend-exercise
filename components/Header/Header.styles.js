@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { colors } from "../../config/theme";
+import { colors } from "../../constants/theme";
 
 import BaseContainer from "../../components/Container";
 
