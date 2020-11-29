@@ -6,6 +6,7 @@ export const FormWrapper = styled.form`
   background-color: ${colors.white};
   border-radius: 10px;
   box-shadow: 6px 6px 54px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
 `;
 
 const FormRow = styled.div`
