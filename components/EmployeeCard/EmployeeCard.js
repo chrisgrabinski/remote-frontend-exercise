@@ -49,7 +49,7 @@ EmployeeCard.propTypes = {
   id: PropTypes.string,
   jobTitle: PropTypes.string,
   name: PropTypes.string,
-  salary: PropTypes.number,
+  salary: PropTypes.string,
 };
 
 EmployeeCard.defaultProps = {

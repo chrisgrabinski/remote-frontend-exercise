@@ -8,7 +8,7 @@ const DEFAULT_EMPLOYEES = [
     birthDate: "1990-12-04",
     jobTitle: "Product manager",
     country: "United States",
-    salary: 60000,
+    salary: "60000",
   },
   {
     id: "1",
@@ -16,7 +16,7 @@ const DEFAULT_EMPLOYEES = [
     birthDate: "1995-04-20",
     jobTitle: "CEO",
     country: "United States",
-    salary: 60000,
+    salary: "60000",
   },
   {
     id: "2",
@@ -24,7 +24,7 @@ const DEFAULT_EMPLOYEES = [
     birthDate: "1989-07-25",
     jobTitle: "Software engineer",
     country: "United States",
-    salary: 60000,
+    salary: "60000",
   },
 ];
 
