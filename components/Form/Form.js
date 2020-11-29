@@ -35,7 +35,9 @@ export default function Form({
     });
   };
 
-  const handleButtonResetClick = () => {
+  const handleButtonResetClick = (event) => {
+    event.preventDefault();
+
     router.push("/");
   };
 
