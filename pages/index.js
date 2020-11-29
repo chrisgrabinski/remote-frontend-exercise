@@ -3,6 +3,8 @@ import Link from "next/link";
 import Head from "next/head";
 import { EmployeesContext } from "../context/EmployeesContext";
 
+import PageHeader from "../components/PageHeader";
+import Button from "../components/Button";
 import EmployeeList from "../components/EmployeeList";
 import EmployeeCard from "../components/EmployeeCard";
 
@@ -14,7 +16,15 @@ export default function IndexPage() {
       <Head>
         <title>People</title>
       </Head>
-      <Link href="/add">Add employee</Link>
+      <PageHeader
+        title="People"
+        description={`${employees.length} employees`}
+        action={
+          <Link href="/add" passHref>
+            <Button as="a">Add employee</Button>
+          </Link>
+        }
+      />
       <EmployeeList>
         {employees.map((employee) => (
           <EmployeeCard key={employee.id} {...employee} />
