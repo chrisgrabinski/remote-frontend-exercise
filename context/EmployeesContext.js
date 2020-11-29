@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import generateEmployeeId from "../utils/generate-employee-id";
+import { v4 as uuid4 } from "uuid";
 
 const DEFAULT_EMPLOYEES = [
   {
@@ -35,9 +35,8 @@ export const EmployeesProvider = ({ children }) => {
   const [employees, setEmployees] = useState(initialState);
 
   const createEmployee = (employee) => {
-    const employeeId = generateEmployeeId(employee.name);
     const employeeData = {
-      id: employeeId,
+      id: uuid4(),
       ...employee,
     };
 
