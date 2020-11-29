@@ -3,6 +3,7 @@ import Link from "next/link";
 import Head from "next/head";
 import { EmployeesContext } from "../context/EmployeesContext";
 
+import EmployeeList from "../components/EmployeeList";
 import EmployeeCard from "../components/EmployeeCard";
 
 export default function IndexPage() {
@@ -14,11 +15,11 @@ export default function IndexPage() {
         <title>People</title>
       </Head>
       <Link href="/add">Add employee</Link>
-      <ul>
+      <EmployeeList>
         {employees.map((employee) => (
           <EmployeeCard key={employee.id} {...employee} />
         ))}
-      </ul>
+      </EmployeeList>
     </>
   );
 }

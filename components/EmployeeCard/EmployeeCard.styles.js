@@ -2,14 +2,14 @@ import styled from "styled-components";
 
 import { colors } from "../../config/theme";
 
-export const Row = styled.div`
+import { Row as EmployeeListRow } from "../EmployeeList/EmployeeList.styles";
+
+export const Row = styled(EmployeeListRow)`
   align-items: center;
   background-color: ${colors.white};
   border-radius: 10px;
-  display: grid;
-  gap: 16px;
-  grid-template-columns: repeat(4, 1fr) auto;
-  padding: 32px 24px;
+  padding-top: 32px;
+  padding-bottom: 32px;
 `;
 
 export const Cell = styled.span`
