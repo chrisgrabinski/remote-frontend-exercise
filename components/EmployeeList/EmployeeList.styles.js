@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import { colors } from "../../config/theme";
+
 export const Table = styled.div``;
 
 export const RowGroup = styled.div``;
@@ -12,6 +14,7 @@ export const Row = styled.div`
 `;
 
 export const Cell = styled.span`
+  color: ${colors.lightGrey};
   font-size: 12px;
   font-weight: 600;
   text-transform: uppercase;
