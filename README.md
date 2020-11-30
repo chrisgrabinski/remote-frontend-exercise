@@ -1,4 +1,4 @@
-Frontend code exercise from Remote.
+# Frontend code exercise from Remote
 
 This project contains a React CRUD application (without delete). You can create and update records of employees. State-management is handled via the React Context API, so you can just clone the repository and get started right away.
 
