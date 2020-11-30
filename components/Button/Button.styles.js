@@ -21,10 +21,6 @@ export const Wrapper = styled.button`
   line-height: 1.2;
   min-width: 140px;
   padding: 0 24px;
-
-  &:focus {
-    outline: 0;
-  }
 `;
 
 export const Icon = styled.span`
