@@ -17,6 +17,14 @@ const NEW_EMPLOYEE = {
   salary: "75000",
 };
 
+function renderWithEmployees(ui) {
+  const Wrapper = ({ children }) => (
+    <EmployeesProvider>{children}</EmployeesProvider>
+  );
+
+  render(ui, { wrapper: Wrapper });
+}
+
 test("create a new employee in context", () => {
   const TestComponent = () => {
     const { employees, createEmployee } = useContext(EmployeesContext);
@@ -31,17 +39,14 @@ test("create a new employee in context", () => {
     );
   };
 
-  render(
-    <EmployeesProvider>
-      <TestComponent />
-    </EmployeesProvider>
-  );
+  renderWithEmployees(<TestComponent />);
 
   UserEvent.click(screen.getByRole("button"));
 
-  const output = screen.getByTestId("output");
-
-  expect(output).toHaveTextContent(new RegExp(NEW_EMPLOYEE.name, "i"));
+  const employeeOutput = JSON.parse(
+    screen.getByTestId("output").textContent
+  )[0];
+  expect(employeeOutput).toMatchObject(NEW_EMPLOYEE);
 });
 
 test("read an existing employee from context", () => {
@@ -59,19 +64,15 @@ test("read an existing employee from context", () => {
     );
   };
 
-  render(
-    <EmployeesProvider>
-      <TestComponent />
-    </EmployeesProvider>
-  );
+  renderWithEmployees(<TestComponent />);
 
-  const output = screen.getByTestId("output");
-
-  expect(output).toHaveTextContent(new RegExp(exampleEmployee.name, "i"));
+  const employeeOutput = JSON.parse(screen.getByTestId("output").textContent);
+  expect(employeeOutput).toMatchObject(exampleEmployee);
 });
 
 test("update an existing employee in context", () => {
   const updatedEmployee = {
+    ...NEW_EMPLOYEE,
     name: "Fox Mulder",
   };
 
@@ -94,19 +95,13 @@ test("update an existing employee in context", () => {
     );
   };
 
-  render(
-    <EmployeesProvider>
-      <TestComponent />
-    </EmployeesProvider>
-  );
+  renderWithEmployees(<TestComponent />);
 
-  let output = screen.getByTestId("output");
-
-  expect(output.textContent).toMatch(new RegExp(NEW_EMPLOYEE.name, "i"));
+  let employeeOutput = JSON.parse(screen.getByTestId("output").textContent);
+  expect(employeeOutput).toMatchObject(NEW_EMPLOYEE);
 
   UserEvent.click(screen.getByRole("button"));
 
-  output = screen.getByTestId("output");
-
-  expect(output).toHaveTextContent(new RegExp(updatedEmployee.name, "i"));
+  employeeOutput = JSON.parse(screen.getByTestId("output").textContent);
+  expect(employeeOutput).toMatchObject(updatedEmployee);
 });
