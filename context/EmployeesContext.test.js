@@ -1,7 +1,8 @@
+/* eslint-disable react/prop-types */
+
 import React, { useContext } from "react";
 import { render, screen } from "@testing-library/react";
 import UserEvent from "@testing-library/user-event";
-import "@testing-library/jest-dom";
 
 import {
   DEFAULT_EMPLOYEES,
@@ -25,27 +26,30 @@ function renderWithEmployees(ui) {
   render(ui, { wrapper: Wrapper });
 }
 
+function parseOutput(output) {
+  return JSON.parse(output.textContent);
+}
+
+const TestComponentBody = ({ onClick, output }) => (
+  <>
+    <button {...{ onClick }} />
+    <div data-testid="output">{JSON.stringify(output)}</div>
+  </>
+);
+
 test("create a new employee in context", () => {
   const TestComponent = () => {
     const { employees, createEmployee } = useContext(EmployeesContext);
+    const handleClick = () => createEmployee(NEW_EMPLOYEE);
 
-    return (
-      <>
-        <button onClick={() => createEmployee(NEW_EMPLOYEE)}>
-          Add new employee
-        </button>
-        <div data-testid="output">{JSON.stringify(employees)}</div>
-      </>
-    );
+    return <TestComponentBody onClick={handleClick} output={employees} />;
   };
 
   renderWithEmployees(<TestComponent />);
 
   UserEvent.click(screen.getByRole("button"));
 
-  const employeeOutput = JSON.parse(
-    screen.getByTestId("output").textContent
-  )[0];
+  const employeeOutput = parseOutput(screen.getByTestId("output"))[0];
   expect(employeeOutput).toMatchObject(NEW_EMPLOYEE);
 });
 
@@ -54,19 +58,14 @@ test("read an existing employee from context", () => {
 
   const TestComponent = () => {
     const { getEmployee } = useContext(EmployeesContext);
+    const output = getEmployee(exampleEmployee.id);
 
-    return (
-      <>
-        <div data-testid="output">
-          {JSON.stringify(getEmployee(exampleEmployee.id))}
-        </div>
-      </>
-    );
+    return <TestComponentBody {...{ output }} />;
   };
 
   renderWithEmployees(<TestComponent />);
 
-  const employeeOutput = JSON.parse(screen.getByTestId("output").textContent);
+  const employeeOutput = parseOutput(screen.getByTestId("output"));
   expect(employeeOutput).toMatchObject(exampleEmployee);
 });
 
@@ -82,26 +81,19 @@ test("update an existing employee in context", () => {
     );
 
     const targetEmployee = employees[0].id;
+    const output = getEmployee(targetEmployee);
+    const handleClick = () => updateEmployee(targetEmployee, updatedEmployee);
 
-    return (
-      <>
-        <div data-testid="output">
-          {JSON.stringify(getEmployee(targetEmployee))}
-        </div>
-        <button onClick={() => updateEmployee(targetEmployee, updatedEmployee)}>
-          Update employee
-        </button>
-      </>
-    );
+    return <TestComponentBody onClick={handleClick} output={output} />;
   };
 
   renderWithEmployees(<TestComponent />);
 
-  let employeeOutput = JSON.parse(screen.getByTestId("output").textContent);
-  expect(employeeOutput).toMatchObject(NEW_EMPLOYEE);
+  const originalEmployeeOutput = parseOutput(screen.getByTestId("output"));
+  expect(originalEmployeeOutput).toMatchObject(NEW_EMPLOYEE);
 
   UserEvent.click(screen.getByRole("button"));
 
-  employeeOutput = JSON.parse(screen.getByTestId("output").textContent);
-  expect(employeeOutput).toMatchObject(updatedEmployee);
+  const updatedEmployeeOutput = parseOutput(screen.getByTestId("output"));
+  expect(updatedEmployeeOutput).toMatchObject(updatedEmployee);
 });
